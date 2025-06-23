@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pesan Die Cut Sticker</title>
   <style>
     * { box-sizing: border-box; }
@@ -46,11 +46,6 @@
       border-radius: 8px;
       font-size: 14px;
     }
-    .hint {
-      font-size: 12px;
-      color: #888;
-      margin-top: 4px;
-    }
     button {
       width: 100%;
       margin-top: 20px;
@@ -87,7 +82,7 @@
     <form onsubmit="sendToWhatsApp(); return false;">
       <h2>Pesan "Die Cut Sticker"</h2>
       <div class="deskripsi">
-        Stiker die cut adalah stiker yang dipotong sesuai pola desain hingga ke kertas belakang menggunakan alat khusus, menghasilkan bentuk yang presisi. Terbuat dari bahan vinyl atau bontak, stiker ini terdiri dari tiga lapisan: pelindung, desain, dan kertas belakang. Cocok untuk media promosi, stiker die cut mudah diaplikasikan ke berbagai permukaan seperti dinding, meja, atau mobil dengan cara menempel dan menggosoknya hingga desain menempel sempurna.
+        Cutting sticker die cut adalah stiker yang dipotong presisi mengikuti bentuk desain hingga ke bagian belakangnya, sehingga menghasilkan tampilan yang lebih rapi dan profesional. Stiker ini sangat bermanfaat sebagai media promosi, branding, atau dekorasi karena dapat ditempel pada berbagai permukaan seperti kaca, kendaraan, dinding, dan lainnya. Dengan daya rekat yang kuat dan ketahanan terhadap cuaca, die cut sticker menjadi pilihan tepat untuk menyampaikan identitas visual secara efektif, menarik perhatian, dan meningkatkan kesan eksklusif pada produk atau bisnis Anda.
       </div>
 
       <label>Nama Anda</label>
@@ -98,7 +93,7 @@
 
       <label>Bahan Kertas</label>
       <select id="bahan" required>
-        <option value="" disabled selected>Pilih bahan sticker</option>
+        <option value="" disabled selected>Pilih bahan stiker</option>
         <option value="Sticker Bontak Glossy">Sticker Bontak Glossy</option>
         <option value="Sticker Bontak Doff">Sticker Bontak Doff</option>
         <option value="Sticker Vinyl Glossy">Sticker Vinyl Glossy</option>
@@ -111,9 +106,13 @@
         <option value="Sticker Vinyl Hologram">Sticker Vinyl Hologram</option>
         <option value="Sticker Vinyl Tafeta">Sticker Vinyl Tafeta</option>
         <option value="Sticker Papercraft">Sticker Papercraft</option>
+        <option value="Sticker Flourescent Red">Sticker Flourescent Red</option>
+        <option value="Sticker Flourescent Green">Sticker Flourescent Green</option>
+        <option value="Sticker Flourescent Pink">Sticker Flourescent Pink</option>
+        <option value="Sticker Flourescent Orange">Sticker Flourescent Orange</option>
       </select>
 
-      <label>Jumlah Lembaran A3+</label>
+      <label>Jumlah Lembar A3+</label>
       <input type="number" id="jumlah" min="1" required>
 
       <label>Kapan Dibutuhkan?</label>
@@ -123,7 +122,7 @@
       <input type="time" id="jam" required>
 
       <label>Catatan Khusus untuk Admin Kami</label>
-      <textarea id="catatan" rows="4" placeholder="Contoh: Potong per karakter, kirim ke alamat X, dll."></textarea>
+      <textarea id="catatan" rows="4" placeholder="Contoh: Mau dipotong 5 desain beda, kasih jarak 0.5 cm, dll."></textarea>
 
       <div class="note">
         <b>Penting !</b>
@@ -137,19 +136,18 @@
   <script>
     function formatTanggalIndo(tanggalInput) {
       const bulanIndo = ["Januari", "Februari", "Maret", "April", "Mei", "Juni",
-                         "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+        "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
       const hariIndo = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-
       const dateObj = new Date(tanggalInput);
       const hari = hariIndo[dateObj.getDay()];
       const tanggal = dateObj.getDate();
       const bulan = bulanIndo[dateObj.getMonth()];
       const tahun = dateObj.getFullYear();
-
       return `${hari}, ${tanggal} ${bulan} ${tahun}`;
     }
 
     function sendToWhatsApp() {
+      const adminWa = "6282335222268";
       const nama = document.getElementById("nama").value;
       const nowa = document.getElementById("nowa").value;
       const bahan = document.getElementById("bahan").value;
@@ -159,14 +157,12 @@
       const jam = document.getElementById("jam").value;
       const catatan = document.getElementById("catatan").value || "-";
 
-      const adminWa = "6281216370657";
-
       const pesan =
         `📌 Pemesanan Die Cut Sticker\n\n` +
         `👤 Nama: ${nama}\n` +
         `📱 No. WA: ${nowa}\n` +
-        `📄 Bahan: ${bahan}\n` +
-        `🔢 Jumlah: ${jumlah} pcs\n` +
+        `🧾 Bahan: ${bahan}\n` +
+        `📄 Jumlah Lembar A3+: ${jumlah}\n` +
         `🗓️ Hari Dateline: ${tanggal}\n` +
         `⏰ Jam Dateline: ${jam}\n` +
         `📝 Catatan: ${catatan}`;
